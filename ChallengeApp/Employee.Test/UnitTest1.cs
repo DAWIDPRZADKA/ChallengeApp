@@ -18,8 +18,6 @@ namespace ChallengeApp.Tests
 
             // assert        
             Assert.AreEqual(27, result);
-
-
         }
     }
 }
