@@ -34,9 +34,9 @@
             var statistcis3 = Employee3.GetStatistics();
 
             // assert
-            Assert.AreEqual(statistcis1.Min, 3);
-            Assert.AreEqual(statistcis2.Min, 1);
-            Assert.AreEqual(statistcis3.Min, 5);
+            Assert.AreEqual(3, statistcis1.Min);
+            Assert.AreEqual(1, statistcis2.Min);
+            Assert.AreEqual(5, statistcis3.Min);
         }
 
         [Test]
@@ -71,9 +71,9 @@
             var statistcis3 = Employee3.GetStatistics();
 
             // assert
-            Assert.AreEqual(statistcis1.Max, 10);
-            Assert.AreEqual(statistcis2.Max, 8);
-            Assert.AreEqual(statistcis3.Max, 9);
+            Assert.AreEqual(10, statistcis1.Max);
+            Assert.AreEqual(8, statistcis2.Max);
+            Assert.AreEqual(9, statistcis3.Max);
         }
 
         [Test]
@@ -108,9 +108,9 @@
             var statistcis3 = Employee3.GetStatistics();
 
             // assert
-            Assert.AreEqual(statistcis1.Average, 5.4F);
-            Assert.AreEqual(statistcis2.Average, 4.2F);
-            Assert.AreEqual(statistcis3.Average, 7.6F);
+            Assert.AreEqual(5.4F, statistcis1.Average);
+            Assert.AreEqual(4.2F, statistcis2.Average);
+            Assert.AreEqual(7.6F, statistcis3.Average);
         }
     }
 }
