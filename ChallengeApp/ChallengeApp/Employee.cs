@@ -31,7 +31,7 @@ namespace ChallengeApp
             }
             else
             {
-            Console.WriteLine("invalid grade value");
+            Console.WriteLine("invalid grade value for" + " " + this.Name + " " + this.Surname);
             }
         }
         public void AddGrade(string grade)
