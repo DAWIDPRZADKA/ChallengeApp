@@ -24,7 +24,34 @@ namespace ChallengeApp
 
         public void AddGrade(float grade)
         {
+            byte valueInByte = (byte)grade;
+            if (grade >= 0 && grade <= 100)
+            {
             this.grades.Add(grade);
+            }
+            else
+            {
+            Console.WriteLine("invalid grade value");
+            }
+        }
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float for" + " " + this.Name + " " + this.Surname);
+            }
+        }
+        public void AddGrade(int grade)
+        {
+            this.AddGrade((float)grade);
+        }
+        public void AddGrade(double grade)
+        {
+            this.AddGrade((float)grade);
         }
         public Statistics GetStatistics()
         {
@@ -33,7 +60,7 @@ namespace ChallengeApp
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
 
-            foreach(var grade in this.grades)
+            foreach (var grade in this.grades)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);

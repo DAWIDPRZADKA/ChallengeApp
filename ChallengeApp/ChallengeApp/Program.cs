@@ -7,15 +7,15 @@ var Employee3 = new Employee("Michał", "Kot", "30");
 
 Employee1.AddGrade(10);
 Employee1.AddGrade(4);
-Employee1.AddGrade(6);
-Employee1.AddGrade(4);
+Employee1.AddGrade("6");
 Employee1.AddGrade(3);
+Employee1.AddGrade("cztery");
 
 Employee2.AddGrade(1);
-Employee2.AddGrade(3);
+Employee2.AddGrade("3");
 Employee2.AddGrade(2);
-Employee2.AddGrade(8);
-Employee2.AddGrade(7);
+Employee2.AddGrade("8");
+Employee2.AddGrade("siedem");
 
 Employee3.AddGrade(5);
 Employee3.AddGrade(6);
