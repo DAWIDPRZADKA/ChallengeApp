@@ -112,5 +112,116 @@
             Assert.AreEqual(4.2F, statistcis2.Average);
             Assert.AreEqual(7.6F, statistcis3.Average);
         }
+
+        [Test]
+        public void ChecksIfThereAreLetterGradeAverageCorrect()
+        {
+            // arrange
+            var Employee1 = new Employee("Kamila", "Kowalska", "23");
+            var Employee2 = new Employee("Karolina", "Nowa", "18");
+            var Employee3 = new Employee("Michał", "Kot", "30");
+
+            // act
+            Employee1.AddGrade('A');
+            Employee1.AddGrade('B');
+            Employee1.AddGrade('C');
+            Employee1.AddGrade('D');
+            Employee1.AddGrade('E');
+
+            Employee2.AddGrade('A');
+            Employee2.AddGrade('B');
+            Employee2.AddGrade('A');
+            Employee2.AddGrade('C');
+            Employee2.AddGrade('A');
+
+            Employee3.AddGrade('C');
+            Employee3.AddGrade('E');
+            Employee3.AddGrade('C');
+            Employee3.AddGrade('D');
+            Employee3.AddGrade('E');
+
+            var statistcis1 = Employee1.GetStatistics();
+            var statistcis2 = Employee2.GetStatistics();
+            var statistcis3 = Employee3.GetStatistics();
+
+            // assert
+            Assert.AreEqual('c', statistcis1.AverageLetter);
+            Assert.AreEqual('b', statistcis2.AverageLetter);
+            Assert.AreEqual('d', statistcis3.AverageLetter);
+        }
+        [Test]
+        public void ChecksIfThereAreLowercaseAndUppercaseLetterGradeAverageCorrect()
+        {
+            // arrange
+            var Employee1 = new Employee("Kamila", "Kowalska", "23");
+            var Employee2 = new Employee("Karolina", "Nowa", "18");
+            var Employee3 = new Employee("Michał", "Kot", "30");
+
+            // act
+            Employee1.AddGrade('A');
+            Employee1.AddGrade('b');
+            Employee1.AddGrade('c');
+            Employee1.AddGrade('d');
+            Employee1.AddGrade('E');
+
+            Employee2.AddGrade('a');
+            Employee2.AddGrade('B');
+            Employee2.AddGrade('A');
+            Employee2.AddGrade('c');
+            Employee2.AddGrade('a');
+
+            Employee3.AddGrade('c');
+            Employee3.AddGrade('E');
+            Employee3.AddGrade('c');
+            Employee3.AddGrade('D');
+            Employee3.AddGrade('e');
+
+            var statistcis1 = Employee1.GetStatistics();
+            var statistcis2 = Employee2.GetStatistics();
+            var statistcis3 = Employee3.GetStatistics();
+
+            // assert
+            Assert.AreEqual('c', statistcis1.AverageLetter);
+            Assert.AreEqual('b', statistcis2.AverageLetter);
+            Assert.AreEqual('d', statistcis3.AverageLetter);
+        }
+
+        [Test]
+        public void ChecksIfThereAreLowercaseAndUppercaseLetterGradeMinimumCorrect()
+        {
+            // arrange
+            var Employee1 = new Employee("Kamila", "Kowalska", "23");
+
+            // act
+            Employee1.AddGrade('A');
+            Employee1.AddGrade('b');
+            Employee1.AddGrade('c');
+            Employee1.AddGrade('d');
+            Employee1.AddGrade('E');
+
+            var statistcis1 = Employee1.GetStatistics();
+
+            // assert
+            Assert.AreEqual(20, statistcis1.Min);
+        }
+
+        [Test]
+        public void ChecksIfThereAreLowercaseAndUppercaseLetterGradeMaximumCorrect()
+        {
+            // arrange
+            var Employee1 = new Employee("Kamila", "Kowalska", "23");
+
+            // act
+            Employee1.AddGrade('A');
+            Employee1.AddGrade('b');
+            Employee1.AddGrade('c');
+            Employee1.AddGrade('d');
+            Employee1.AddGrade('E');
+
+            var statistcis1 = Employee1.GetStatistics();
+
+            // assert
+            Assert.AreEqual(100, statistcis1.Max);
+        }
     }
 }
