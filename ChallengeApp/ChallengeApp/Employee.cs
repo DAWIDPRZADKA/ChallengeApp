@@ -31,7 +31,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("Niepoprawna wartość oceny" + " " + this.Name + " " + this.Surname);
+                throw new Exception("Niepoprawna wartość oceny" + " " + this.Name + " " + this.Surname);
             }
         }
         public void AddGrade(string grade)
@@ -61,7 +61,7 @@ namespace ChallengeApp
                         }
                         else
                         {
-                            Console.WriteLine("String nie jest floatem");
+                            throw new Exception("String nie jest floatem");
                         }
                         break;
                 }
@@ -74,7 +74,7 @@ namespace ChallengeApp
                 }
                 else
                 {
-                    Console.WriteLine("Podana wartość nie jest floatem");
+                    throw new Exception("Podana wartość nie jest floatem");
                 }
             }
         }
@@ -125,13 +125,12 @@ namespace ChallengeApp
                     break;
 
                 default:
-                        Console.WriteLine("Ocena - przypisana zła litera");
-                    break;
+                    throw new Exception("Ocena - przypisana zła litera");
             }
         }
         public void AddGrade()
         {
-            Console.WriteLine("Musisz nadusić Enter aby podać wartośc oceny");
+            throw new Exception("Musisz nadusić Enter aby podać wartośc oceny");
         }
         public Statistics GetStatistics()
         {

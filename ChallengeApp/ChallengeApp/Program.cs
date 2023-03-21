@@ -18,7 +18,14 @@ while (true)
     {
         break;
     }
-    Employee1.AddGrade(input_1);
+    try
+    {
+        Employee1.AddGrade(input_1);
+    }
+    catch(Exception e)
+    {
+        Console.WriteLine($"Pojawił się wyjątek: {e.Message}");
+    }
 }
 var statistcis1 = Employee1.GetStatistics();
 
@@ -35,7 +42,14 @@ while (true)
     {
         break;
     }
-    Employee2.AddGrade(input_2);
+    try
+    {
+        Employee2.AddGrade(input_2);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Pojawił się wyjątek: {e.Message}");
+    }
 }
 var statistcis2 = Employee2.GetStatistics();
 
@@ -52,7 +66,14 @@ while (true)
     {
         break;
     }
-    Employee3.AddGrade(input_3);
+    try
+    {
+        Employee3.AddGrade(input_3);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Pojawił się wyjątek: {e.Message}");
+    }
 }
 var statistcis3 = Employee3.GetStatistics();
 
