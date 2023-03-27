@@ -9,20 +9,16 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, string age)
+        public Employee(string name, string surname, string age, string position)
+                : base(name, surname, age)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
+            this.Position = position;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public string Age { get; private set; }
-
+        public string Position { get; private set; }
         public void AddGrade(float grade)
         {       
             if (grade >= 0 && grade <= 100)

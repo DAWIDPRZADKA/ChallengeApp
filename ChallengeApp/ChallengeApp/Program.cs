@@ -6,13 +6,13 @@ Console.WriteLine("===========================================");
 Console.WriteLine("Aby zakończyć wprowadzanie ocen i otrzymac statystykę naciśnij - q");
 Console.WriteLine("");
 
-var Employee1 = new Employee("Kamila", "Kowalska", "23");
-var Employee2 = new Employee("Karolina", "Nowa", "18");
-var Employee3 = new Employee("Michał", "Kot", "30");
+var Employee1 = new Employee("Kamila", "Kowalska", "23", "Constructor");
+var Employee2 = new Employee("Karolina", "Nowa", "18", "Secretary");
+var Employee3 = new Employee("Michał", "Kot", "30", "Manager");
 
 while (true)
 {
-    Console.WriteLine("Podaj ocenę pracownika E1: " + Employee1.Name + " " + Employee1.Surname + " " + Employee1.Age);
+    Console.WriteLine("Podaj ocenę pracownika E1: " + Employee1.Name + " " + Employee1.Surname + ", " + Employee1.Age + ", " + Employee1.Position);
     var input_1 = Console.ReadLine();
         if (input_1 == "q")
     {
@@ -36,7 +36,7 @@ Console.WriteLine($"Max- E1: {statistcis1.Max}");
 
 while (true)
 {
-    Console.WriteLine("Podaj ocenę pracownika E2: " + Employee2.Name + " " + Employee2.Surname + " " + Employee2.Age);
+    Console.WriteLine("Podaj ocenę pracownika E2: " + Employee2.Name + " " + Employee2.Surname + ", " + Employee2.Age + ", " + Employee2.Position);
     var input_2 = Console.ReadLine();
     if (input_2 == "q")
     {
@@ -60,7 +60,7 @@ Console.WriteLine($"Max- E3: {statistcis2.Max}");
 
 while (true)
 {
-    Console.WriteLine("Podaj ocenę pracownika E3: " + Employee3.Name + " " + Employee3.Surname + " " + Employee3.Age);
+    Console.WriteLine("Podaj ocenę pracownika E3: " + Employee3.Name + " " + Employee3.Surname + ", " + Employee3.Age + ", " + Employee3.Position);
     var input_3 = Console.ReadLine();
     if (input_3 == "q")
     {
