@@ -8,7 +8,7 @@ Console.WriteLine("");
 
 var Employee1 = new Employee("Kamila", "Kowalska", "23", "Constructor");
 var Employee2 = new Employee("Karolina", "Nowa", "18", "Secretary");
-var Employee3 = new Employee("Michał", "Kot", "30", "Manager");
+var Supervisor1 = new Supervisor("Michał", "Kot", "30", "Manager");
 
 while (true)
 {
@@ -60,24 +60,24 @@ Console.WriteLine($"Max- E3: {statistcis2.Max}");
 
 while (true)
 {
-    Console.WriteLine("Podaj ocenę pracownika E3: " + Employee3.Name + " " + Employee3.Surname + ", " + Employee3.Age + ", " + Employee3.Position);
-    var input_3 = Console.ReadLine();
-    if (input_3 == "q")
+    Console.WriteLine("Podaj ocenę pracownika S1: " + Supervisor1.Name + " " + Supervisor1.Surname + ", " + Supervisor1.Age + ", " + Supervisor1.Position);
+    var input_S1 = Console.ReadLine();
+    if (input_S1 == "q")
     {
         break;
     }
     try
     {
-        Employee3.AddGrade(input_3);
+        Supervisor1.AddGrade(input_S1);
     }
     catch (Exception e)
     {
         Console.WriteLine($"Pojawił się wyjątek: {e.Message}");
     }
 }
-var statistcis3 = Employee3.GetStatistics();
+var statistcisS1 = Supervisor1.GetStatistics();
 
-Console.WriteLine($"Average Letter - E3: {statistcis3.AverageLetter:N2}");
-Console.WriteLine($"Average - E3: {statistcis3.Average:N2}");
-Console.WriteLine($"Min - E3: {statistcis3.Min}");
-Console.WriteLine($"Max- E3: {statistcis3.Max}");
+Console.WriteLine($"Average Letter - S1: {statistcisS1.AverageLetter:N2}");
+Console.WriteLine($"Average - S1: {statistcisS1.Average:N2}");
+Console.WriteLine($"Min - S1: {statistcisS1.Min}");
+Console.WriteLine($"Max- S1: {statistcisS1.Max}");

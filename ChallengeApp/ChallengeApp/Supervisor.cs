@@ -1,10 +1,10 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    internal class Supervisor : IEmployee
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, string age, string position)
+        public Supervisor(string name, string surname, string age, string position)
         {
             this.Name = name;
             this.Surname = surname;
@@ -16,7 +16,7 @@
         public string Age { get; private set; }
         public string Position { get; private set; }
         public void AddGrade(float grade)
-        {       
+        {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
@@ -33,16 +33,13 @@
                 char resultChar = grade[0];
                 switch (resultChar)
                 {
-                    case 'A':
-                    case 'a':
-                    case 'B':
-                    case 'b':
-                    case 'C':
-                    case 'c':
-                    case 'D':
-                    case 'd':
-                    case 'E':
-                    case 'e':
+                    case '6':
+                    case '5':
+                    case '4':
+                    case '3':
+                    case '2':
+                    case '1':
+
                         this.AddGrade(resultChar);
                         break;
                     default:
@@ -60,13 +57,60 @@
             }
             else
             {
-                if (float.TryParse(grade, out float result))
+                if (grade.Length == 2)
                 {
-                    this.AddGrade(result);
-                }
-                else
-                {
-                    throw new Exception("Podana wartość nie jest floatem");
+                    
+                    string resultString = grade;
+                    switch (resultString)
+                    {
+                        //6
+                        case "6-" or "-6":
+                            this.grades.Add(95);
+                            break;
+                        //5
+                        case "5+" or "+5":
+                            this.grades.Add(85);
+                            break;
+                        case "5-" or "-5":
+                            this.grades.Add(75);
+                            break;
+                        //4
+                        case "4+" or "+4":
+                            this.grades.Add(65);
+                            break;
+                        case "4-" or "-4":
+                            this.grades.Add(55);
+                            break;
+                        //3
+                        case "3+" or "+3":
+                            this.grades.Add(45);
+                            break;
+                        case "3-" or "-3":
+                            this.grades.Add(35);
+                            break;
+                        //2
+                        case "2+" or "+2":
+                            this.grades.Add(25);
+                            break;
+                        case "2-" or "-2":
+                            this.grades.Add(15);
+                            break;
+                        //1
+                        case "1+" or "+1":
+                            this.grades.Add(5);
+                            break;
+                        default:
+
+                            if (float.TryParse(grade, out float result))
+                            {
+                                this.AddGrade(result);
+                            }
+                            else
+                            {
+                                throw new Exception("String nie jest floatem");
+                            }
+                            break;
+                    }
                 }
             }
         }
@@ -88,36 +132,34 @@
             this.AddGrade((float)grade);
         }
         public void AddGrade(char grade)
-        {            
+        {
             switch (grade)
             {
-                case 'A':
-                case 'a':
+                case '6':
                     this.grades.Add(100);
                     break;
 
-                case 'B':
-                case 'b':
+                case '5':
                     this.grades.Add(80);
                     break;
 
-                case 'C':
-                case 'c':
+                case '4':
                     this.grades.Add(60);
                     break;
 
-                case 'D':
-                case 'd':
+                case '3':
                     this.grades.Add(40);
                     break;
 
-                case 'E':
-                case 'e':
+                case '2':
                     this.grades.Add(20);
+                    break;
+                case '1':
+                    this.grades.Add(0);
                     break;
 
                 default:
-                    throw new Exception("Ocena - przypisana zła litera");
+                    throw new Exception("Przypisana zła wartość oceny");
             }
         }
         public void AddGrade()
@@ -175,4 +217,4 @@
 
         }
     }
- }
+}
