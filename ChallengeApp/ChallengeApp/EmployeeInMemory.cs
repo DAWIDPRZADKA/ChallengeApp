@@ -1,22 +1,14 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> grades = new List<float>();
-
-        public Employee(string name, string surname, string age, string position)
+        public EmployeeInMemory(string name, string surname, string position, string age)
+            : base(name, surname, position, age)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-            this.Position = position;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public string Age { get; private set; }
-        public string Position { get; private set; }
-        public void AddGrade(float grade)
-        {       
+        public override void AddGrade(float grade)
+        {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
@@ -26,7 +18,8 @@
                 throw new Exception("Niepoprawna wartość oceny" + " " + this.Name + " " + this.Surname);
             }
         }
-        public void AddGrade(string grade)
+
+        public override void AddGrade(string grade)
         {
             if (grade.Length == 1)
             {
@@ -70,25 +63,30 @@
                 }
             }
         }
-        public void AddGrade(double grade)
+
+        public override void AddGrade(double grade)
         {
             float result = (float)grade;
             this.AddGrade(result);
         }
-        public void AddGrade(int grade)
+
+        public override void AddGrade(int grade)
         {
             this.AddGrade((float)grade);
         }
-        public void AddGrade(long grade)
+
+        public override void AddGrade(long grade)
         {
             this.AddGrade((float)grade);
         }
-        public void AddGrade(decimal grade)
+
+        public override void AddGrade(decimal grade)
         {
             this.AddGrade((float)grade);
         }
-        public void AddGrade(char grade)
-        {            
+
+        public override void AddGrade(char grade)
+        {
             switch (grade)
             {
                 case 'A':
@@ -120,11 +118,13 @@
                     throw new Exception("Ocena - przypisana zła litera");
             }
         }
-        public void AddGrade()
+
+        public override void AddGrade()
         {
             throw new Exception("Musisz nadusić Enter aby podać wartość oceny");
         }
-        public Statistics GetStatistics()
+
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -172,7 +172,6 @@
                 statistics.Average = 0;
             }
             return statistics;
-
         }
     }
- }
+}
