@@ -1,8 +1,12 @@
-﻿namespace ChallengeApp
+﻿using System.Runtime.CompilerServices;
+
+namespace ChallengeApp
 {
     internal class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
+
+        public event GradeAddedDelegate GradeAdded;
         public EmployeeInFile(string name, string surname, string position, string age) : base(name, surname, position, age)
         {
         }
@@ -14,6 +18,11 @@
                 if (grade >= 0 && grade <= 100)
                 {
                     writer.WriteLine(grade);
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
                 }
                 else
                 {
