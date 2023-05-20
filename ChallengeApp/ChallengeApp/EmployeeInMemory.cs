@@ -4,7 +4,8 @@
     {
         private List<float> grades = new List<float>();
         
-        public event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInMemory(string name, string surname, string position, string age)
             : base(name, surname, position, age)
         {
@@ -134,49 +135,9 @@
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            foreach (var grade in this.grades)
+            foreach(var grade in this.grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
-            }
-            statistics.Average = statistics.Average / this.grades.Count;
-            switch (statistics.Average)
-            {
-                case var average when average >= 100:
-                    statistics.AverageLetter = 'A';
-                    statistics.AverageLetter = 'a';
-                    break;
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'B';
-                    statistics.AverageLetter = 'b';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'C';
-                    statistics.AverageLetter = 'c';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'D';
-                    statistics.AverageLetter = 'd';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'E';
-                    statistics.AverageLetter = 'e';
-                    break;
-                default:
-                    statistics.AverageLetter = 'F';
-                    statistics.AverageLetter = 'e';
-                    break;
-            }
-            if (grades.Count == 0)
-            {
-                statistics.Max = 0;
-                statistics.Min = 0;
-                statistics.Average = 0;
+                statistics.AddGrade(grade);
             }
             return statistics;
         }

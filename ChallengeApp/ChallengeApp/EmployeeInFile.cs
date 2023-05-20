@@ -1,12 +1,10 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     internal class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
 
-        public event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedDelegate GradeAdded;
         public EmployeeInFile(string name, string surname, string position, string age) : base(name, surname, position, age)
         {
         }
@@ -42,15 +40,27 @@ namespace ChallengeApp
                     {
                         case 'A':
                         case 'a':
+                            writer.WriteLine(100);
+                            break;
+
                         case 'B':
                         case 'b':
+                            writer.WriteLine(80);
+                            break;
+
                         case 'C':
                         case 'c':
+                            writer.WriteLine(60);
+                            break;
+
                         case 'D':
                         case 'd':
+                            writer.WriteLine(40);
+                            break;
+
                         case 'E':
                         case 'e':
-                            writer.WriteLine(resultChar);
+                            writer.WriteLine(20);
                             break;
                         default:
 
@@ -179,53 +189,13 @@ namespace ChallengeApp
             }
             return grades;
         }
- 
+
         private Statistics CountStatistics(List<float> grades)
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            foreach (var grade in grades)
+            foreach (var grade in ReadGradesFromFile())
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
-            }
-            statistics.Average = statistics.Average / grades.Count;
-            switch (statistics.Average)
-            {
-                case var average when average >= 100:
-                    statistics.AverageLetter = 'a';
-                    statistics.AverageLetter = 'a';
-                    break;
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'b';
-                    statistics.AverageLetter = 'b';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'c';
-                    statistics.AverageLetter = 'c';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'd';
-                    statistics.AverageLetter = 'd';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'e';
-                    statistics.AverageLetter = 'e';
-                    break;
-                default:
-                    statistics.AverageLetter = 'f';
-                    statistics.AverageLetter = 'e';
-                    break;
-            }
-            if (grades.Count == 0)
-            {
-                statistics.Max = 0;
-                statistics.Min = 0;
-                statistics.Average = 0;
+                statistics.AddGrade(grade);
             }
             return statistics;
         }
