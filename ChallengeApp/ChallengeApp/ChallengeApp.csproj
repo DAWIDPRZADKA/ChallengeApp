@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\daw-p\OneDrive\Dokumenty\Projekty C\ChallengeApp\ChallengeApp\ChallengeApp\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\daw-p\OneDrive\Dokumenty\Projekty C\ChallengeApp\ChallengeApp\ChallengeApp\.editorconfig" />
+  </ItemGroup>
+
 </Project>
